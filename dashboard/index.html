@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K8bit</title>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+  <style>
+    div[data-tooltip]:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      border-top: 0.5em solid #357EDD;
+      border-left: 0.5em solid transparent;
+      border-right: 0.5em solid transparent;
+      display: none;
+    }
+
+    div[data-tooltip]:after {
+      content: attr(data-tooltip);
+      position: absolute;
+      color: white;
+      top: -1.5em;
+      left: -1em;
+      background: #357EDD;
+      padding: .25em .75em;
+      border-radius: .5em;
+      white-space: nowrap;
+      display: none;
+    }
+
+    div[data-tooltip]:hover:before,
+    div[data-tooltip]:hover:after {
+      display: inline;
+    }
+  </style>
+</head>
+
+<body class="h-min-100 bg-near-black sans-serif vh-100">
+  <div id="start" class="vh-100 w-100">
+    <div class="flex flex-column items-center justify-center h-100">
+      <input type="text" placeholder="URL" class="input-reset pa2 f2 ba b--light-gray br2">
+      <div class="pv3"></div>
+      <button class="pa3 ma0 ttu b bg-green white bn br2 f2 pointer">Start</button>
+    </div>
+  </div>
+  <div id="root" class="flex justify-center items-center h-100 dn">
+    <div id="content" class="flex"></div>
+    <div id="sidebar" class="white">
+      <div class="ph3">
+        <p class="f5 ttu b mv0 tc">Pending requests</p>
+        <p class="f-headline b mv0 tc" id="size">0</p>
+        <div class="pv1"></div>
+        <button class="bn bg-yellow pa3 br2 b ttu hover-bg-gold pointer" id="go">Issue a request</button>
+        <!-- <div class="pv1"></div> -->
+        <!-- <button class="bn bg-gray pa2 br2 b ttu hover-dark-gray pointer near-white" id="reset">scale to zero</button> -->
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+  <script src='app.js'></script>
+</body>
+
+</html>

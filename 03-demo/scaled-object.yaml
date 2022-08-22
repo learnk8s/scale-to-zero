@@ -1,0 +1,14 @@
+kind: HTTPScaledObject
+apiVersion: http.keda.sh/v1alpha1
+metadata:
+    name: podinfo
+spec:
+    host: example.com
+    targetPendingRequests: 100
+    scaleTargetRef:
+        deployment: podinfo
+        service: podinfo
+        port: 80
+    replicas:
+        min: 0
+        max: 10
