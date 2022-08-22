@@ -190,17 +190,24 @@ setInterval(() => {
     .then((response) => {
       app.updateQueueSize(response["example.com"]);
     });
-}, 1000);
+}, 300);
 
 document.querySelector("#go")?.addEventListener("click", (e) => {
   jsConfetti.addConfetti({
     emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
     emojiSize: 200,
+    confettiNumber: 20,
   });
   const url = start.querySelector("input").value;
-  fetch(url.startsWith("http:") ? url : `http://${url}`, {
-    mode: "no-cors",
-  });
+  fetch(
+    url.startsWith("http://")
+      ? `${url}?${Date.now()}`
+      : `http://${url}?${Date.now()}`,
+    {
+      mode: "no-cors",
+      cache: "no-cache",
+    }
+  );
 });
 
 document.querySelector("#reset")?.addEventListener("click", (e) => {
