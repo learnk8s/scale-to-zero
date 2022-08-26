@@ -10,3 +10,4 @@ node_ip.txt
 terraform.tfstate.*
 .terraform
 .terraform.tfstate.lock.info
+kubeconfig
